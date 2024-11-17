@@ -1,0 +1,5 @@
+"# Ignore unnecessary files" 
+"__pycache__/" 
+"*.pyc" 
+".vscode/" 
+"*.env" 
