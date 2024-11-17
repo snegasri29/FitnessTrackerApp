@@ -1,5 +1,6 @@
-# Ignore Firebase credentials file
-fitness-tracker-app.json
+.streamlit/secrets.toml
+
+
 
 # Ignore other files that may contain sensitive information
 *.env
@@ -11,5 +12,3 @@ node_modules/
 *.log
 *.bak
 
-# Ignore Streamlit config files
-*.streamlit/
