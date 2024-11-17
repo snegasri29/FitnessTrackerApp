@@ -7,14 +7,21 @@ from datetime import datetime
 
 import os
 
+import tempfile
+
+# Initialize Firebase app
 if not firebase_admin._apps:
     # Get Firebase credentials from Streamlit secrets
     firebase_creds = st.secrets["firebase"]["credentials"]
     
-    # Convert the string credentials into a file-like object using StringIO
-    cred = credentials.Certificate(io.StringIO(firebase_creds))
+    # Create a temporary file to write the credentials
+    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.json') as temp_file:
+        # Write the credentials JSON string to the temp file
+        temp_file.write(firebase_creds)
+        temp_file_path = temp_file.name
     
-    # Initialize Firebase app with the credentials
+    # Initialize the Firebase app using the temp file
+    cred = credentials.Certificate(temp_file_path)
     firebase_admin.initialize_app(cred)
 
 # Access Firestore
