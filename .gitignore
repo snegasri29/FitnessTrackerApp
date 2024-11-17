@@ -10,3 +10,6 @@ fitness-tracker-app.json
 node_modules/
 *.log
 *.bak
+
+# Ignore Streamlit config files
+*.streamlit/
