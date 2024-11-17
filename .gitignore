@@ -1,5 +1,12 @@
-"# Ignore unnecessary files" 
-"__pycache__/" 
-"*.pyc" 
-".vscode/" 
-"*.env" 
+# Ignore Firebase credentials file
+fitness-tracker-app.json
+
+# Ignore other files that may contain sensitive information
+*.env
+*.key
+*.pem
+
+# Ignore common build files
+node_modules/
+*.log
+*.bak
