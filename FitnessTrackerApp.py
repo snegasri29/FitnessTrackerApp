@@ -5,27 +5,13 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-import os
-
-import tempfile
-
 # Initialize Firebase app
 if not firebase_admin._apps:
-    # Get Firebase credentials from Streamlit secrets
-    firebase_creds = st.secrets["firebase"]["credentials"]
-    
-    # Create a temporary file to write the credentials
-    with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.json') as temp_file:
-        # Write the credentials JSON string to the temp file
-        temp_file.write(firebase_creds)
-        temp_file_path = temp_file.name
-    
-    # Initialize the Firebase app using the temp file
-    cred = credentials.Certificate(temp_file_path)
+    cred = credentials.Certificate(r"C:\Users\avnsn\OneDrive\Desktop\FitnessTrackerApp\fitness-tracker-app.json")
     firebase_admin.initialize_app(cred)
 
-# Access Firestore
 db = firestore.client()
+
 
 # Nutritionix API credentials
 API_URL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
