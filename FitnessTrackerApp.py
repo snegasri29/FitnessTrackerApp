@@ -7,15 +7,17 @@ from datetime import datetime
 
 import os
 
-
-
-
-# Initialize Firebase app
 if not firebase_admin._apps:
-    # Use relative path to the credentials file
-    cred = credentials.Certificate(st.secrets["firebase"]["credentials"])
+    # Get Firebase credentials from Streamlit secrets
+    firebase_creds = st.secrets["firebase"]["credentials"]
+    
+    # Convert the string credentials into a file-like object using StringIO
+    cred = credentials.Certificate(io.StringIO(firebase_creds))
+    
+    # Initialize Firebase app with the credentials
     firebase_admin.initialize_app(cred)
 
+# Access Firestore
 db = firestore.client()
 
 # Nutritionix API credentials
