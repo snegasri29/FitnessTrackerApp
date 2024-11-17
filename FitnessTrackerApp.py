@@ -6,14 +6,14 @@ import pandas as pd
 from datetime import datetime
 
 import os
-from firebase_admin import credentials
+
 
 
 
 # Initialize Firebase app
 if not firebase_admin._apps:
     # Use relative path to the credentials file
-    cred = credentials.Certificate(os.path.join(os.getcwd(), "fitness-tracker-app.json"))
+    cred = credentials.Certificate(st.secrets["firebase"]["credentials"])
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
